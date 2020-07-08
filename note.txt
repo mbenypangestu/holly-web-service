@@ -1,0 +1,6 @@
+Note for crawler
+- beberapa location request failed (status code : 400) = 6 location
+- beberapa location tidak memiliki hotel = 532 location
+- 5 menit = 1000 data location
+- 10 menit = 1600 data location
+- 15 menit = 2100 data location
