@@ -23,8 +23,8 @@ import { PredictionModule } from './app/services/prediction/prediction.module';
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mongodb',
-      host: 'localhost',
-      // host: '10.8.0.3',
+      // host: 'localhost',
+      host: '10.8.0.3',
       port: 27017,
       database: 'holly_dev',
       entities: [__dirname + '/**/**/*.entity{.ts,.js}'],

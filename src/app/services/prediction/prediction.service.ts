@@ -52,6 +52,9 @@ export class PredictionService {
           hotel_id: hotel_id,
           year: year,
         },
+        order: {
+          month: 'ASC',
+        },
       });
     } catch (error) {
       throw new BadRequestException('Failed to get data hotel !\n' + error);
@@ -68,6 +71,7 @@ export class PredictionService {
         where: {
           hotel_id: hotel_id,
           year: year,
+          month: month,
         },
       });
     } catch (error) {
