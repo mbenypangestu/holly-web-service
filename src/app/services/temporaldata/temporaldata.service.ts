@@ -58,4 +58,23 @@ export class TemporaldataService {
       throw new BadRequestException('Failed to get data hotel !\n' + error);
     }
   }
+
+  async getRelatedHotel(
+    location_id: number,
+    year: number,
+    month: number,
+  ): Promise<Temporaldata[]> {
+    try {
+      return await this.repo.find({
+        where: {
+          location_id: location_id,
+          year: year,
+          month: month,
+        },
+        take: 5,
+      });
+    } catch (error) {
+      throw new BadRequestException('Failed to get data hotel !\n' + error);
+    }
+  }
 }
