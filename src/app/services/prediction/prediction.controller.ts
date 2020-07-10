@@ -1,13 +1,12 @@
-import { Controller, Get, Param, Query, Body } from '@nestjs/common';
-import { TemporaldataService } from './temporaldata.service';
-import { GetTemporaldataDto } from './dto/get-temporaldata.dto';
-import { Temporaldata } from './temporaldata.entity';
+import { Controller, Get, Query } from '@nestjs/common';
+import { PredictionService } from './prediction.service';
+import { Prediction } from './prediction.entity';
 import { ApiUseTags } from '@nestjs/swagger';
 
-@Controller('api/v1/temporaldata')
-@ApiUseTags('temporaldata')
-export class TemporaldataController {
-  constructor(public service: TemporaldataService) {}
+@Controller('api/v1/prediction')
+@ApiUseTags('prediction')
+export class PredictionController {
+  constructor(public service: PredictionService) {}
 
   @Get('/getyear')
   async getAll(): Promise<any> {
@@ -20,7 +19,7 @@ export class TemporaldataController {
     @Query('location_name') location_name: string,
     @Query('year') year: string,
     @Query('month') month: string,
-  ): Promise<Temporaldata[]> {
+  ): Promise<Prediction[]> {
     var year_num = parseInt(year);
     var month_num = parseInt(month);
 
@@ -40,13 +39,30 @@ export class TemporaldataController {
     return await Promise.resolve(datas);
   }
 
-  @Get('/getby_hotel')
-  async getByHotel(
+  @Get('/getby_hotel_year')
+  async getByHotelYear(
     @Query('hotel_id') hotel_id: string,
     @Query('year') year: string,
-  ): Promise<Temporaldata[]> {
+  ): Promise<Prediction[]> {
     var year_num = parseInt(year);
     const datas = await this.service.getByHotel(hotel_id, year_num);
+    return await Promise.resolve(datas);
+  }
+
+  @Get('/getby_hotel_year_month')
+  async getByHotelYearMonth(
+    @Query('hotel_id') hotel_id: string,
+    @Query('year') year: string,
+    @Query('month') month: string,
+  ): Promise<Prediction> {
+    var year_num = parseInt(year);
+    var month_num = parseInt(month);
+
+    const datas = await this.service.getByHotelYearMonth(
+      hotel_id,
+      year_num,
+      month_num,
+    );
     return await Promise.resolve(datas);
   }
 }

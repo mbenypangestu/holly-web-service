@@ -16,6 +16,7 @@ import { ReviewModule } from './app/services/review/review.module';
 import { KafkaModule } from './app/services/kafka/kafka.module';
 import { KafkaService } from './app/services/kafka/kafka.service';
 import { TemporaldataModule } from './app/services/temporaldata/temporaldata.module';
+import { PredictionModule } from './app/services/prediction/prediction.module';
 
 @Module({
   imports: [
@@ -23,8 +24,9 @@ import { TemporaldataModule } from './app/services/temporaldata/temporaldata.mod
     TypeOrmModule.forRoot({
       type: 'mongodb',
       host: 'localhost',
+      // host: '10.8.0.3',
       port: 27017,
-      database: 'holly_production',
+      database: 'holly_dev',
       entities: [__dirname + '/**/**/*.entity{.ts,.js}'],
       synchronize: true,
       logging: true,
@@ -40,6 +42,7 @@ import { TemporaldataModule } from './app/services/temporaldata/temporaldata.mod
     ReviewModule,
     KafkaModule,
     TemporaldataModule,
+    PredictionModule,
   ],
   controllers: [AppController],
   providers: [AppService, LocationService, KafkaService],
