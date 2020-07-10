@@ -63,6 +63,7 @@ export class TemporaldataService {
     location_id: number,
     year: number,
     month: number,
+    cluster: number,
   ): Promise<Temporaldata[]> {
     try {
       return await this.repo.find({
@@ -70,6 +71,7 @@ export class TemporaldataService {
           location_id: location_id,
           year: year,
           month: month,
+          cluster: cluster,
         },
         take: 5,
       });

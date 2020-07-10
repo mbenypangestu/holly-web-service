@@ -55,15 +55,18 @@ export class TemporaldataController {
     @Query('location_id') location_id: string,
     @Query('year') year: string,
     @Query('month') month: string,
+    @Query('cluster') cluster: string,
   ): Promise<Temporaldata[]> {
     var year_num = parseInt(year);
     var month_num = parseInt(month);
     var location_id_num = parseInt(location_id);
+    var cluster_num = parseInt(cluster);
 
     const datas = await this.service.getRelatedHotel(
       location_id_num,
       year_num,
       month_num,
+      cluster_num,
     );
     return await Promise.resolve(datas);
   }
