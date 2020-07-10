@@ -1,6 +1,6 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
 import { Temporaldata } from './temporaldata.entity';
-import { Repository, MongoRepository } from 'typeorm';
+import { Repository, MongoRepository, Not, In } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 import { GetTemporaldataDto } from './dto/get-temporaldata.dto';
 
@@ -61,6 +61,7 @@ export class TemporaldataService {
 
   async getRelatedHotel(
     location_id: number,
+    // hotel_id: string,
     year: number,
     month: number,
     cluster: number,
@@ -72,8 +73,9 @@ export class TemporaldataService {
           year: year,
           month: month,
           cluster: cluster,
+          // hotel_id: Not(In([hotel_id])),
         },
-        take: 5,
+        take: 6,
       });
     } catch (error) {
       throw new BadRequestException('Failed to get data hotel !\n' + error);
