@@ -18,7 +18,7 @@ export class LocationService {
     }
   }
 
-  async findById(location_id: string): Promise<Location> {
+  async findById(location_id: number): Promise<Location> {
     try {
       return await this.repo.findOne({
         location_id: location_id,
@@ -27,6 +27,7 @@ export class LocationService {
       throw new BadRequestException('Failed to get data location !');
     }
   }
+
   async findIndonesia(): Promise<Location[]> {
     try {
       return await this.repo.find({

@@ -37,7 +37,7 @@ export class UpdateHotelDto {
   readonly is_candidate_for_contact_info_suppression?: boolean;
 
   readonly location?: Location;
-  readonly locationID?: string;
+  readonly locationID?: number;
   readonly locationObjectID?: ObjectID;
   readonly created_at?: Date;
 }

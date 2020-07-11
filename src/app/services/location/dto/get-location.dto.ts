@@ -11,7 +11,7 @@ export class GetLocation {
   name: string;
 
   @ApiModelProperty()
-  location_id: string;
+  location_id: number;
 
   constructor(data: ILocation) {
     this._id = data._id;

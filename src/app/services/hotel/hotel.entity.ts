@@ -82,7 +82,7 @@ export class Hotel implements IHotel {
 
   @Column() is_candidate_for_contact_info_suppression: boolean;
 
-  @ObjectIdColumn() locationID: string;
+  @ObjectIdColumn() locationID: number;
 
   @ObjectIdColumn() locationObjectID: ObjectID;
 

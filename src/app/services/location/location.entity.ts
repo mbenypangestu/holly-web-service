@@ -11,7 +11,7 @@ export class Location implements ILocation {
   name: string;
 
   @Column()
-  location_id: string;
+  location_id: number;
 
   @OneToMany(type => Hotel, hotel => hotel.location)
   hotels: Hotel[];

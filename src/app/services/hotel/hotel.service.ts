@@ -57,10 +57,10 @@ export class HotelService {
     }
   }
 
-  async getHotelsByLocationId(location_id: string): Promise<Hotel[]> {
+  async getHotelsByLocationId(location_id: number): Promise<Hotel[]> {
     try {
       return await this.repo.find({
-        where: { locationID: parseInt(location_id) },
+        where: { locationID: location_id },
       });
     } catch (error) {
       throw new BadRequestException('Failed to get data hotel !');
