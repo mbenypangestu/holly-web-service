@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { Crud, CrudController, Override } from '@nestjsx/crud';
 import { Location } from './location.entity';
 import { LocationService } from './location.service';
@@ -15,6 +15,12 @@ export class LocationController {
     const datas = (await this.service.findAll()).map(
       loc => new GetLocation(loc),
     );
+    return Promise.resolve(datas);
+  }
+
+  @Get('/:id')
+  async getById(@Param('id') id: string): Promise<Location> {
+    const datas = await this.service.findById(id);
     return Promise.resolve(datas);
   }
 }
