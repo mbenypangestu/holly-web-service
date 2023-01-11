@@ -32,7 +32,7 @@
     "@nestjsx/crud-typeorm": "^4.2.0",
     "check-internet-connected": "^2.0.1",
     "class-transformer": "^0.2.3",
-    "class-validator": "^0.10.0",
+    "class-validator": "^0.14.0",
     "kafka-node": "^5.0.0",
     "kafkajs": "^1.11.0",
     "mongodb": "^3.3.2",
